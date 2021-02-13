@@ -1,7 +1,7 @@
 const express = require('express');
-const home = require('../routes/home');
+const index = require('../routes/index');
 
 
 module.exports = function(app) {
-    app.use('/', home)
+    app.use('/', index);
 }
