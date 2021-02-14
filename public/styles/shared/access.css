@@ -1,0 +1,27 @@
+.register__innerContainer {
+    border: 1px solid #000;
+    width: 26em;
+    color: var(--color-text-dark);
+    background: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media(max-width: 600px){
+    .register{
+        height: 100vh;
+        background: white;
+    }
+    
+    .register__innerContainer{
+        border: none;
+        width: 90%;
+    }
+
+    .page-header{
+        /* margin-top: 30%; */
+    }
+}

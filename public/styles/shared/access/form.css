@@ -1,0 +1,56 @@
+:root{
+    --form-label-font-size: 16px;
+    --form-input-background-color: hsl(var(--color-base-hue), 100%, 31%);
+    --form-input-border-color: hsl(var(--color-base-hue), 100%, 50%);
+    --form-input-border-color-dark: hsl(var(--color-base-hue), 100%, 30%);
+}
+
+.access__form{
+    margin: 0 auto;
+    width: 80%;
+    background: var(--color-input-background-color);
+}
+
+.access__form .access__form-container {
+    margin-bottom: 0.2em;
+}
+
+.access__form input {
+    width: 100%;
+    margin-bottom: 1.5em;
+    height: 3em;
+    border: none;
+    border-bottom: 1px solid var(--form-input-border-color);
+    outline: 0;
+    font-size: var(--form-label-font-size);
+}
+
+.access__form .access__form-last{
+    margin-bottom: 35px;
+}
+
+.access__form div input:focus{
+    border-color: var(--form-input-border-color-dark);
+}
+
+.register__message {
+    margin: 45px 0 25px 20px;
+}
+
+.register__message a {
+    margin-left: 5px;
+    color: var(--color-text-dark);
+    transition: 0.3s;
+}
+
+.register__message a:hover {
+    transition: 0s;
+
+    color: var(--color-text-light);
+}
+
+@media(max-width: 600px){
+    .register__message{
+        text-align: center;
+    }
+}

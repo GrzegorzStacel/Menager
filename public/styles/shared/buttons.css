@@ -1,0 +1,47 @@
+:root {
+    --color-btn-primary-background: hsl(var(--color-base-hue), 100%, 70%);
+    --color-btn-primary-background-dark: hsl(var(--color-base-hue), 100%, 80%);
+    --color-btn-primary-text: hsl(var(--color-base-hue), 100%, 20%);
+    --color-btn-primary-text-dark: hsl(var(--color-base-hue), 100%, 10%);
+    --color-btn-border: black;
+    --color-btn-danger-background: hsl(var(--color-danger-hue), 100%, 83%);
+    --color-btn-danger-background-dark: hsl(var(--color-danger-hue), 100%, 73%);
+    --color-btn-danger-text: black;
+    --color-btn-danger-text-dark: black;
+}
+
+.btn {
+    border: 1px solid var(--color-btn-border);
+    border-radius: 30px;
+    padding: 10px 70px;
+    font-size: 1.2rem;
+    font-family: "Gotham Rounded";
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    transition: 0.3s;
+    color: var(--color-btn-primary-text);
+    background-color: var(--color-btn-primary-background);
+}
+
+.btn-primary:hover {
+    transition: 0s;
+    color: var(--color-btn-primary-text-dark);
+    background-color: var(--color-btn-primary-background-dark);
+}
+
+.btn-center{
+    display: block;
+    margin: 0 auto;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
