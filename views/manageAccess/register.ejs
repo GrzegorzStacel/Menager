@@ -1,26 +1,26 @@
-      <div class="register">
-        <div class="register__innerContainer">
-          <h1 class="page-header">Register</h1>
+      <div class="access">
+        <div class="access__innerContainer">
+          <h1 class="pageHeader">Register</h1>
           <form class="access__form" action="/register" method="POST">
-            <div class="access__form-container">
-              <input type="name" id="name" name="name" class="form-control" placeholder="NAME"
+            <div class="access__form-margin">
+              <input type="name" id="name" name="name"  placeholder="NAME"
                 value="<%= typeof name != 'undefined' ? name : '' %>" />
             </div>
-            <div class="access__form-container">
-              <input type="email" id="email" name="email" class="form-control" placeholder="EMAIL"
+            <div class="access__form-margin">
+              <input type="email" id="email" name="email"  placeholder="EMAIL"
                 value="<%= typeof email != 'undefined' ? email : '' %>" />
             </div>
-            <div class="access__form-container">
-              <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD"
-                value="<%= typeof password != 'undefined' ? password : '' %>" />
+            <div class="access__form-margin">
+              <input type="password" id="password" name="password"  placeholder="PASSWORD"
+                value="<%= typeof password != 'undefined' ? password : '' %>"/>
             </div>
-            <div class="access__form-last">
-              <input type="password" id="password2" name="password2" class="form-control" placeholder="CONFIRM PASSWORD"
+            <div class="access__form-marginLast">
+              <input type="password" id="password2" name="password2" placeholder="CONFIRM PASSWORD"
                 value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
             </div>
             <%- include('../partials/messages') %>
             <button class="btn btn-primary btn-center" type="submit">Register</button>
           </form>
-          <p class="register__message">Have an account? <a href="/login">Login</a></p>
+          <p class="access__message">Have an account? <a href="/login">Login</a></p>
         </div>
       </div>

@@ -11,7 +11,7 @@
     background: var(--color-input-background-color);
 }
 
-.access__form .access__form-container {
+.access__form .access__form-margin {
     margin-bottom: 0.2em;
 }
 
@@ -25,7 +25,7 @@
     font-size: var(--form-label-font-size);
 }
 
-.access__form .access__form-last{
+.access__form .access__form-marginLast{
     margin-bottom: 35px;
 }
 
@@ -33,24 +33,24 @@
     border-color: var(--form-input-border-color-dark);
 }
 
-.register__message {
+.access__message {
     margin: 45px 0 25px 20px;
 }
 
-.register__message a {
+.access__message a {
     margin-left: 5px;
     color: var(--color-text-dark);
     transition: 0.3s;
 }
 
-.register__message a:hover {
+.access__message a:hover {
     transition: 0s;
 
     color: var(--color-text-light);
 }
 
 @media(max-width: 600px){
-    .register__message{
+    .access__message{
         text-align: center;
     }
 }

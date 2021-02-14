@@ -34,7 +34,11 @@ body {
     border: 1px solid #000;
 }
 
-.page-header{
+.pageHeader{
     font-size: 2.5em;
     text-align: center;
+}
+
+.pageHeader-medium{
+    font-size: 2em;
 }

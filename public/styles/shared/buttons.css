@@ -1,24 +1,40 @@
 :root {
-    --color-btn-primary-background: hsl(var(--color-base-hue), 100%, 70%);
-    --color-btn-primary-background-dark: hsl(var(--color-base-hue), 100%, 80%);
+    --color-btn-border: black;
+    
     --color-btn-primary-text: hsl(var(--color-base-hue), 100%, 20%);
     --color-btn-primary-text-dark: hsl(var(--color-base-hue), 100%, 10%);
-    --color-btn-border: black;
-    --color-btn-danger-background: hsl(var(--color-danger-hue), 100%, 83%);
-    --color-btn-danger-background-dark: hsl(var(--color-danger-hue), 100%, 73%);
+    
+    --color-btn-primary-background: hsl(var(--color-base-hue), 100%, 70%);
+    --color-btn-primary-background-dark: hsl(var(--color-base-hue), 100%, 80%);
+
     --color-btn-danger-text: black;
     --color-btn-danger-text-dark: black;
+    
+    --color-btn-danger-background: hsl(var(--color-danger-hue), 100%, 83%);
+    --color-btn-danger-background-dark: hsl(var(--color-danger-hue), 100%, 73%);
 }
 
 .btn {
     border: 1px solid var(--color-btn-border);
     border-radius: 30px;
     padding: 10px 70px;
+    margin-bottom: 20px;
     font-size: 1.2rem;
+    width: 200px;
     font-family: "Gotham Rounded";
     cursor: pointer;
-    text-decoration: none;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:focus {
+    outline: none; 
+    border-radius: 30px;
+    box-shadow: 0px 0px 3px var(--color-btn-border),
+                0px 0px 2px var(--color-btn-border),
+                0px 0px 3px var(--color-btn-border);
 }
 
 .btn-primary {
@@ -34,7 +50,6 @@
 }
 
 .btn-center{
-    display: block;
     margin: 0 auto;
 }
 
@@ -45,3 +60,13 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
+.btn-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: ;
+    flex-wrap: wrap;
+}
+
+.btn-margin{
+    margin: 40px;
+}
