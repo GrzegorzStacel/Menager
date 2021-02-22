@@ -1,0 +1,10 @@
+<h2 class="page-header"><%= company.name %></h2>
+<div class="btn-row">
+    <a class="btn btn-primary btn-focus-white" href="/companies/<%= company.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm', { url: `/companies/${company.id}` }) %>
+</div>
+
+<% if(gamesByCompany.length > 0) { %>
+<h2 class="page-header">Games By Company</h2>
+<%- include('../partials/gameGrid', { games: gamesByCompany }) %> 
+<% } %>

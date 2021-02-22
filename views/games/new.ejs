@@ -1,0 +1,10 @@
+<div class="container__innerContainer">
+    <h2 class="page-header">New Game</h2>
+    <form action="/games" method="POST">
+        <%- include('_form_fields') %>
+        <div class="form-row form-row-end btn-row">
+            <a class='btn btn-danger' href="/games">Cancel</a>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+</div>

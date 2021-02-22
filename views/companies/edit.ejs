@@ -1,0 +1,8 @@
+<h2 class="page-header">Edit Comany</h2>
+<form action="/companies/<%= company.id %>?_method=PUT" method="POST">
+    <%- include('_form_fields') %> 
+    <div class="form-row form-row-end btn-row">
+        <a class="btn btn-danger btn-focus-white" href="/companies/<%= company.id %>">Cancel</a>
+        <button class="btn btn-primary btn-focus-white" type="submit">Update</button>
+    </div>
+</form>

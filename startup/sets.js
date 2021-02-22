@@ -1,22 +1,20 @@
+require('express-async-errors')
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session')
 const flash = require('connect-flash')
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 
 module.exports = function (app, passport) {
-    // EJS
     app.set('view engine', 'ejs')
-    app.use(expressLayouts)
-
     app.set('../views', __dirname + '/views')
-    app.set('layout', 'layouts/layout')
+    app.set('layout', 'layouts/layoutAccess')
+    app.use(expressLayouts)
+    app.use(methodOverride('_method'))
     app.use(express.static('public'))
-
-    // Bodyparser
-    app.use(express.urlencoded({
-        extended: false
-    }))
+    app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
     // Express Session
     app.use(session({

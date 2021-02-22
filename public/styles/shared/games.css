@@ -1,0 +1,60 @@
+:root {
+    --game-cover-width: 200px;
+    --game-cover-width-large: 325px;
+    --game-cover-aspect-ratio: 0.75;
+}
+
+.game-cover {
+    width: var(--game-cover-width);
+    height: calc(var(--game-cover-width) / var(--game-cover-aspect-ratio));
+}
+
+.game-cover-large {
+    --game-cover-width: var(--game-cover-width-large)
+}
+
+.game-grid {
+    display: grid;
+    justify-content: center;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, var(--game-cover-width));
+}
+
+.game-grid-large {
+    grid-template-columns: repeat(auto-fill, var(--game-cover-width-large));
+}
+
+.game-details {
+    display: flex;
+}
+
+.game-details-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.game-details-grid {
+    display: grid;
+    align-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    grid-template-columns: auto auto;
+}
+
+.game-details-btn-grid {
+    display: grid;
+    justify-items: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    grid-template-areas: 
+        'edit delete'
+        'company company';  
+    gap: .5rem;
+    margin-top: .5rem;
+}
+
+.game-details-company-button {
+    grid-area: company;
+    justify-self: stretch;
+}

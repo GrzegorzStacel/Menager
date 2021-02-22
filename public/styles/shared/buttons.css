@@ -1,5 +1,6 @@
 :root {
-    --color-btn-border: black;
+    --color-btn-border-dark: black;
+    --color-btn-border-light: white;
     
     --color-btn-primary-text: hsl(var(--color-base-hue), 100%, 20%);
     --color-btn-primary-text-dark: hsl(var(--color-base-hue), 100%, 10%);
@@ -23,18 +24,27 @@
     width: 200px;
     font-family: "Gotham Rounded";
     cursor: pointer;
+    text-decoration: none;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.btn:focus {
+.btn-focus-black:focus {
     outline: none; 
     border-radius: 30px;
-    box-shadow: 0px 0px 3px var(--color-btn-border),
-                0px 0px 2px var(--color-btn-border),
-                0px 0px 3px var(--color-btn-border);
+    box-shadow: 0px 0px 3px var(--color-btn-border-dark),
+                0px 0px 2px var(--color-btn-border-dark),
+                0px 0px 3px var(--color-btn-border-dark);
+}
+
+.btn-focus-white:focus {
+    outline: none; 
+    border-radius: 30px;
+    box-shadow: 0px 0px 0px 2px var(--color-btn-border-light),
+                0px 0px 0px 1px var(--color-btn-border-light),
+                0px 0px 0px 2px var(--color-btn-border-light);
 }
 
 .btn-primary {
@@ -63,10 +73,19 @@ input:-webkit-autofill:active  {
 .btn-row {
     display: flex;
     justify-content: space-around;
-    align-items: ;
     flex-wrap: wrap;
 }
 
 .btn-margin{
     margin: 40px;
+}
+
+.btn-danger {
+    color: var(--color-btn-danger-text);
+    background-color: var(--color-btn-danger-background);
+}
+
+.btn-danger:hover {
+    color: var(--color-btn-danger-text-dark);
+    background-color: var(--color-btn-danger-background-dark);
 }

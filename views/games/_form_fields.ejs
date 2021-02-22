@@ -1,0 +1,39 @@
+<div class="form-row">
+    <div class="form-item">
+        <label>Title</label>
+        <input type="text" name="title" value="<%= game.title %>">
+    </div>
+    <div class="form-item">
+        <label>Company</label>
+        <select name="company">
+            <% companies.forEach(company => { %>
+            <% if(company.id === game.company) { %>
+            <option selected label="<%= company.name %>" value="<%= company.id %>">
+                <% } else { %>
+            <option label="<%= company.name %>" value="<%= company.id %>">
+                <% } %>
+                <% }) %>
+        </select>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-item">
+        <label>Publish Date</label>
+        <input type="date" name="publishDate"
+            value="<%= game.publishDate == null ? '' : game.publishDate.toISOString().split('T')[0]  %>">
+    </div>
+    <div class="form-item">
+        <label>Scheduled game time</label>
+        <input type="number" name="playTime" value="<%= game.playTime %>">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-item form-item-no-grow">
+        <label>Cover</label>
+        <input type="file" name="cover" class="game-cover filepond">
+    </div>
+    <div class="form-item">
+        <label>Description</label>
+        <textarea name="description" value="<%= game.description %>"><%= game.description %></textarea>
+    </div>
+</div>

@@ -1,10 +1,12 @@
 @import 'shared/variables.css';
-@import 'manageAccess/register.css';
 @import 'shared/fonts.css';
 @import 'shared/access.css';
 @import 'shared/buttons.css';
 @import 'shared/access/form.css';
 @import 'error-messages.css';
+@import 'shared/header.css';
+@import 'shared/form.css';
+@import 'shared/games.css';
 
 :root{
     font-family: 'Lato';
@@ -31,7 +33,6 @@ body {
 
 .container__innerContainer{
     margin: 0 2rem;
-    border: 1px solid #000;
 }
 
 .pageHeader{

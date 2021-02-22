@@ -1,0 +1,28 @@
+<h2 class="page-header">Search Companies</h2>
+<form action="/companies" method="GET">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Name</label>
+            <input type="text" name="name" value="<%= searchOptions.name %>">
+        </div>
+    </div>
+    <div class="form-row form-row-end">
+        <button class="btn btn-primary btn-focus-white" type="submit">Search</button>
+    </div>
+</form>
+</form>
+<br>
+<% companies.forEach(company => { %>
+<div class="company-row">
+    <div class="company-name"><%= company.name %></div>
+    <div class="btn-row">
+        <form action="/companies/<%= company.id %>">
+            <button class="btn btn-primary btn-focus-white" type="submit">View</button>
+        </form> 
+        <form action="/companies/<%= company.id %>/edit">
+            <button class="btn btn-primary btn-focus-white" type="submit">Edit</button>
+        </form>
+        <%- include('../partials/deleteForm', { url: `/companies/${company.id}` }) %>
+    </div>
+</div>
+<%  }) %>

@@ -3,13 +3,13 @@
         <h1 class="pageHeader">Login</h1>
         <form class="access__form" action="/login" method="POST">
             <div class="access__form-margin">
-                <input type="email" id="email" name="email" placeholder="EMAIL" />
+                <input type="email" id="email" name="email" value="a@a" placeholder="EMAIL" />
             </div>
             <div class="access__form-marginLast">
-                <input type="password" id="password" name="password" placeholder="PASSWORD" />
+                <input type="password" id="password" name="password" value="123456" placeholder="PASSWORD" />
             </div>
             <%- include('../partials/messages') %>
-            <button class="btn btn-primary btn-center" type="submit">Login</button>
+            <button class="btn btn-primary btn-center btn-focus-black" type="submit">Login</button>
         </form>
         <p class="access__message">
             No Account? <a href="/register">Register</a>
