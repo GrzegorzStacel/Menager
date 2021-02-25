@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 // User model
-const { User, getUserId } = require('../models/User')
+const { User } = require('../models/User')
 
 // Login Page
 router.get('/login', (req, res) => {
