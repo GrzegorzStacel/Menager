@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 const { Game, validate } = require('../models/Game')
 const { Company } = require('../models/Company')
-const { User, getUserId } = require('../models/User')
+const { User } = require('../models/User')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 const { ensureAuthenticated } = require('../middleware/auth')
 
@@ -25,8 +25,6 @@ router.get('/', ensureAuthenticated, async (req, res) => {
         query = query.gte('publishDate', req.query.publishedAfter)
     }
     try {
-        
-
         const games = await query.exec()
         res.render('games/index', {
             games: games,
@@ -46,6 +44,10 @@ router.get('/new', ensureAuthenticated, async (req, res) => {
 
 // Create Game Route
 router.post('/', ensureAuthenticated, async (req, res) => {
+    const userData = await User.findOne({
+        _id: req.session.passport.user
+    })
+
     const game = new Game({
         title: req.body.title,
         company: req.body.company,
@@ -59,12 +61,17 @@ router.post('/', ensureAuthenticated, async (req, res) => {
         return renderFormPage(res, req, game, `new`, true, error.details[0].message)
     }
 
-    const isGame = await Game.findOne({
-        title: req.body.title
+    const arrayGames = await Game.find({
+        _id: userData.gamesOwned
+    })
+
+    let isGame = false;
+    isGame = arrayGames.some(function(item) {
+        return item.title === req.body.title
     })
 
     if (isGame) {
-        return renderFormPage(res, req, game, `new`, true, `A game named "${isGame.title}" already exists`)
+        return renderFormPage(res, req, game, `new`, true, `A game named "${req.body.title}" already exists`)
     }
 
     saveCover(game, req.body.cover)
@@ -74,20 +81,16 @@ router.post('/', ensureAuthenticated, async (req, res) => {
         game.description = capitalizeFirstLetter(game.description)
 
         // # Update user database with his games
-        const updateUserGames = await User.findOne({
-            _id: req.session.passport.user
-        })
-
         let gamesArray = [];
-        if (updateUserGames.gamesOwned.length > 0) {
-            updateUserGames.gamesOwned.forEach((item, index) => {
+        if (userData.gamesOwned.length > 0) {
+            userData.gamesOwned.forEach( item => {
                 gamesArray.push(item);
             })
         }
         gamesArray.push(game._id)
         
-        updateUserGames.gamesOwned = gamesArray;
-        await updateUserGames.save();
+        userData.gamesOwned = gamesArray;
+        await userData.save();
         // #
 
         const newGame = await game.save()

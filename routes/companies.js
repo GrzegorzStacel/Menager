@@ -45,12 +45,20 @@ router.post('/', ensureAuthenticated, async (req, res) => {
     }
 
     try {
-        const isCompany = await Company.findOne({ name: req.body.name })
+
+        const arrayCompanies = await Company.find({
+            _id: userData.gamesCompanies
+        })
+    
+        let isCompany = false;
+        isCompany = arrayCompanies.some(function(item) {
+            return item.name === req.body.name;
+        })
 
         if (isCompany) {
             res.render('companies/new', {
-                company: isCompany,
-                error_msg: `A company named ${isCompany.name} already exists`,
+                company: req.body.name,
+                error_msg: `A company named ${req.body.name} already exists`,
                 userName: userData.name,
                 layout: 'layouts/layout'
             })
@@ -65,7 +73,7 @@ router.post('/', ensureAuthenticated, async (req, res) => {
         }
     } catch (error) {
         res.render('companies/new', {
-            company: isCompany,
+            company: req.body.name,
             error_msg: `Sorry, but something went wrong...`,
             userName: userData.name,
             layout: 'layouts/layout'
@@ -213,11 +221,11 @@ async function renderCompaniesIndex(req, res, err = '') {
         }
 
         res.render('companies/index', {
-        companies: companies,
-        searchOptions: req.query,
-        error_msg: err,
-        userName: userData.name,
-        layout: 'layouts/layout'
+            companies: companies,
+            searchOptions: req.query,
+            error_msg: err,
+            userName: userData.name,
+            layout: 'layouts/layout'
         })
     } catch (error) {
         console.log(error);
