@@ -44,39 +44,40 @@ router.get('/new', ensureAuthenticated, async (req, res) => {
 
 // Create Game Route
 router.post('/', ensureAuthenticated, async (req, res) => {
-    const userData = await User.findOne({
-        _id: req.session.passport.user
-    })
-
-    const game = new Game({
-        title: req.body.title,
-        company: req.body.company,
-        publishDate: new Date(req.body.publishDate),
-        playTime: req.body.playTime,
-        description: req.body.description
-    })
-
-    const { error } = validate(req.body)
-    if (error) {
-        return renderFormPage(res, req, game, `new`, true, error.details[0].message)
-    }
-
-    const arrayGames = await Game.find({
-        _id: userData.gamesOwned
-    })
-
-    let isGame = false;
-    isGame = arrayGames.some(function(item) {
-        return item.title === req.body.title
-    })
-
-    if (isGame) {
-        return renderFormPage(res, req, game, `new`, true, `A game named "${req.body.title}" already exists`)
-    }
-
-    saveCover(game, req.body.cover)
-
     try {
+        const userData = await User.findOne({
+            _id: req.session.passport.user
+        })
+
+        const game = new Game({
+            title: req.body.title,
+            company: req.body.company,
+            publishDate: new Date(req.body.publishDate),
+            playTime: req.body.playTime,
+            description: req.body.description
+        })
+
+        const { error } = validate(req.body)
+        if (error) {
+            return renderFormPage(res, req, game, `new`, true, error.details[0].message)
+        }
+
+        const arrayGames = await Game.find({
+            _id: userData.gamesOwned
+        })
+
+        // Checks for duplicate game names 
+        let isGame = false;
+        isGame = arrayGames.some(function(item) {
+            return item.title === req.body.title
+        })
+
+        if (isGame) {
+            return renderFormPage(res, req, game, `new`, true, `A game named "${req.body.title}" already exists`)
+        }
+
+        saveCover(game, req.body.cover)
+    
         game.title = capitalizeFirstLetter(game.title)
         game.description = capitalizeFirstLetter(game.description)
 
@@ -108,7 +109,7 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
             _id: req.session.passport.user
         })
         const game = await Game.findById(req.params.id)
-            .populate('Company')
+            .populate('company')
             .exec();
         res.render('games/show', {
             game: game,
