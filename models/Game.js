@@ -58,7 +58,7 @@ function validateGame(game) {
         createdAt: Joi.date(),
         coverImage: Joi.binary(),
         coverImageType: Joi.string(),
-        company: Joi.string().required(),
+        company: Joi.ObjectId().required(),
         cover: Joi.string()
     });
 

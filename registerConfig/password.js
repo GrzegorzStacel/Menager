@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
 // Local User Modal
-const User = require('../models/User')
+const { User } = require('../models/User')
 
 // Checks if the user is registered and if the password is correct
 module.exports = function (passport) {

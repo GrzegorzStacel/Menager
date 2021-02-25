@@ -16,9 +16,21 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    gamesOwned: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Game'
+        }
+    ],
+    gamesCompanies: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Companies'
+        }
+    ]
 })
 
 const User = mongoose.model('User', UserSchema)
 
-module.exports = User
+exports.User = User

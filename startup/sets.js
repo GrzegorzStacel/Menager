@@ -15,7 +15,7 @@ module.exports = function (app, passport) {
     app.use(methodOverride('_method'))
     app.use(express.static('public'))
     app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
-
+    
     // Express Session
     app.use(session({
         secret: 'secret',
@@ -29,4 +29,5 @@ module.exports = function (app, passport) {
 
     // Connect flash
     app.use(flash())
+
 }

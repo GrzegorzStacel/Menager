@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Game = require('../models/Game')
+const { Game } = require('../models/Game')
+const { User } = require('../models/User')
 const { ensureAuthenticated } = require('../middleware/auth')
 
 // Welcome page
@@ -12,11 +13,25 @@ router.get('/', (req, res) => {
 router.get('/index', ensureAuthenticated, async (req, res) => {
     let games = []
     try {
-        games = await Game.find().sort({ createdAt: 'desc' }).limit(10).exec()
-    } catch {
+        const updateUserGames = await User.findOne({
+            _id: req.session.passport.user
+        })
+        const arrayOfUserGames = updateUserGames.gamesOwned;
+        games = await Game.find({ _id: arrayOfUserGames }).sort({ createdAt: 'desc' }).limit(10).exec()
+    } catch(err) {
         games = []
+        console.log(err);
     }
-    res.render('app/index', { games: games, layout: 'layouts/layout' })
+
+    const displayUserName = await User.findOne({
+        _id: req.session.passport.user
+    })
+
+    res.render('app/index', {
+        games: games,
+        userName: displayUserName.name,
+        layout: 'layouts/layout'
+    })
 })
 
 module.exports = router;

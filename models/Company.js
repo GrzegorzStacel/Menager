@@ -1,5 +1,6 @@
+const Joi = require('joi');
 const mongoose = require('mongoose')
-const Game = require('./Game')
+const { Game } = require('./Game')
 
 const companySchema = new mongoose.Schema({
     name: {
@@ -13,11 +14,20 @@ companySchema.pre('remove', function(next) {
         if (err) {
             next(err)
         } else if (games.length > 0) {
-            next(new Error('This company has game still')) ///TODO wyświetlić ten komunikat userowi
+            next(`You cannot remove '${this.name}' because it has games assigned to it`);
         } else {
             next();
         }
     })
 })
 
-module.exports = mongoose.model('Company', companySchema)
+function validateCompany(company) {
+    const schema = Joi.object({
+        name: Joi.string().min(2).max(255).required(),
+    });
+
+    return schema.validate(company)
+}
+
+exports.validate = validateCompany;
+exports.Company = mongoose.model('Company', companySchema)
