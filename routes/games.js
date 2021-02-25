@@ -108,14 +108,15 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
             _id: req.session.passport.user
         })
         const game = await Game.findById(req.params.id)
-            .populate('company')
+            .populate('Company')
             .exec();
         res.render('games/show', {
             game: game,
             userName: displayUserName.name,
             layout: 'layouts/layout'
         })
-    } catch {
+    } catch (err) {
+        console.log(err);
         res.redirect('/')
     }
 })
@@ -125,7 +126,8 @@ router.get('/:id/edit', ensureAuthenticated, async (req, res) => {
     try {
         const game = await Game.findById(req.params.id)
         renderFormPage(res, req, game, 'edit')
-    } catch {
+    } catch(err) {
+        console.log(err);
         res.redirect('/')
     }
 })
