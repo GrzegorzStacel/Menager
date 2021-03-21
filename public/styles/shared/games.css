@@ -7,6 +7,19 @@
 .game-cover {
     width: var(--game-cover-width);
     height: calc(var(--game-cover-width) / var(--game-cover-aspect-ratio));
+    border-radius: 15px;
+    border: 1px solid var(--color-btn-border-light);
+}
+
+.game-grid a {
+    text-decoration: none;
+}
+
+.game-cover-title{
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .game-cover-large {
@@ -18,6 +31,7 @@
     justify-content: center;
     gap: 2rem;
     grid-template-columns: repeat(auto-fill, var(--game-cover-width));
+    margin-top: 50px;
 }
 
 .game-grid-large {
@@ -26,6 +40,8 @@
 
 .game-details {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .game-details-label {
@@ -40,21 +56,73 @@
     align-items: center;
     gap: 1rem;
     grid-template-columns: auto auto;
+    background: var(--color-background-light);
+    padding: 30px;
+    border-radius: 20px;
 }
 
-.game-details-btn-grid {
-    display: grid;
-    justify-items: flex-start;
-    align-items: flex-start;
-    align-content: flex-start;
-    grid-template-areas: 
-        'edit delete'
-        'company company';  
-    gap: .5rem;
-    margin-top: .5rem;
+.game-details__btn{
+    flex-basis: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.game-details__btn .btn-primary{
+    margin-left: 0;
+}
+
+.game-details__btn form{
+    display: flex;
 }
 
 .game-details-company-button {
     grid-area: company;
     justify-self: stretch;
+    width: auto;
+}
+
+@media(max-width: 1100px) {
+    .page-header.page-header__gameShow{
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.2em;
+    }
+    .game-details{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-details__btn{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* .game-cover-dss{
+        margin-bottom: 40px;
+    } */
+
+    .game-cover__gameShow{
+        margin-bottom: 50px;
+    }
+}
+
+@media(max-width: 750px) {
+    .game-cover{
+        width: 100%;
+    }
+
+    .game-cover__gameShow{
+        width: var(--game-cover-width);
+    }
+}
+@media(max-width: 450px) {
+    .game-grid-large{ 
+        grid-template-columns: auto;
+    }
+
+    .game-cover-large{
+        width: 200px;
+        height: calc(200px / var(--game-cover-aspect-ratio));
+    }
 }

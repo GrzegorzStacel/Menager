@@ -7,6 +7,7 @@
 
 .form-row {
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 0.5rem;
 }
 
@@ -75,4 +76,21 @@
 .filepond--drop-label {
     color: var(--color-text-light);
     font-size: inherit;
+}
+
+@media(max-width: 750px){
+    .form-item{
+        margin: 10px 0;
+        flex-basis: 100%;
+    }
+
+    .form-item textarea{
+        height: 150px;
+    }
+}
+
+@media(max-width: 350px){
+    .form-item input{
+        width: 100%;
+    }
 }

@@ -1,25 +1,25 @@
 <% if(typeof errors != 'undefined')  { %> 
     <% errors.forEach(function(error){      %>
-        <div class="error-message">
+        <div class="error-manageAccess__message">
             <p><%= error.msg %></p>
         </div>
     <% }) %>
 <% } %> 
 
 <% if(success_msg != '') { %> 
-    <div class="error-message">
+    <div class="error-manageAccess__message">
         <p><%= success_msg %></p>
     </div>
 <% } %> 
 
 <% if(error_msg != '') { %> 
-    <div class="error-message">
+    <div class="error-manageAccess__message">
         <p><%= error_msg %></p> 
     </div>
 <% } %> 
 
 <% if(error != '') { %> 
-    <div class="error-message">
+    <div class="error-manageAccess__message">
         <p><%= error %></p>
     </div>
 <% } %> 

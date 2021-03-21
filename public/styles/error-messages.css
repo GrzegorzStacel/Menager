@@ -2,13 +2,20 @@
     --color-text-danger: hsl(var(--color-danger-hue), 100%, 56%);
 }
 
-.error-message {
+.error-message{
     text-align: center;
-    color: var(--color-text-danger);
-    margin-bottom: 15px;
+    margin-bottom: 65px;
+}
+
+.error-message p{
+    background: var(--color-btn-danger-background-dark);
+    color: var(--color-btn-primary-text-dark);
     font-size: 18px;
+    border-radius: 10px;
+    display: inline;
+    padding: 15px;
 }
 
 .error-message:last-of-type{
-    margin-bottom: 30px;
+    margin-bottom: 65px;
 }

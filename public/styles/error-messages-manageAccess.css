@@ -1,0 +1,14 @@
+:root{
+    --color-text-danger: hsl(var(--color-danger-hue), 100%, 56%);
+}
+
+.error-manageAccess__message p{
+    text-align: center;
+    color: var(--color-text-danger);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.error-manageAccess__message:last-of-type{
+    margin-bottom: 30px;
+}

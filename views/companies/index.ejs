@@ -7,15 +7,15 @@
         </div>
     </div>
     <div class="form-row form-row-end">
-        <button class="btn btn-primary btn-focus-white" type="submit">Search</button>
+        <button class="btn btn-primary btn-focus-white btn__center" type="submit">Search</button>
     </div>
 </form>
 </form>
 <br>
-<% companies.forEach(company => { %>
 <div class="company-row">
-    <div class="company-name"><%= company.name %></div>
-    <div class="btn-row">
+<% companies.forEach(company => { %>
+    <div class="btn-row btn-row__companies">
+        <p class="company-name"><%= company.name %></p>
         <form action="/companies/<%= company.id %>">
             <button class="btn btn-primary btn-focus-white" type="submit">View</button>
         </form> 
@@ -24,5 +24,5 @@
         </form>
         <%- include('../partials/deleteForm', { url: `/companies/${company.id}` }) %>
     </div>
+    <%  }) %>
 </div>
-<%  }) %>

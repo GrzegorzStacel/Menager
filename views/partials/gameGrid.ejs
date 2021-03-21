@@ -4,6 +4,8 @@
 <div class="game-grid <%= gameGridClass %>">
     <% games.forEach(game => { %>
     <a href="/games/<%= game.id %>">
+
+        <p class="game-cover-title"><%= game.title %></p>
         <img class="game-cover <%= gameCoverClass %>" src="<%= game.coverImagePath %>">
     </a>
     <% }) %>

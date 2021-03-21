@@ -4,6 +4,7 @@
 @import 'shared/buttons.css';
 @import 'shared/access/form.css';
 @import 'error-messages.css';
+@import 'error-messages-manageAccess.css';
 @import 'shared/header.css';
 @import 'shared/form.css';
 @import 'shared/games.css';
@@ -26,13 +27,17 @@ body {
 
 .container{
     max-width: 1200px;
-    /* margin: 0; */
+    margin: 0 auto 50px auto;
     min-height: 100vh;
     position: relative;
 }
 
 .container__innerContainer{
     margin: 0 2rem;
+}
+
+.page-header{
+    margin: 0 0 20px;
 }
 
 .pageHeader{
@@ -42,4 +47,10 @@ body {
 
 .pageHeader-medium{
     font-size: 2em;
+}
+
+@media(max-width: 450px){
+    .container__innerContainer{
+        margin: 0 0.5rem;
+    }
 }

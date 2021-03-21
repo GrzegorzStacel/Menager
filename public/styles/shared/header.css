@@ -1,17 +1,17 @@
-:root{
+:root {
     --nav-title-font-size: 3rem;
     --nav-title-font-weight: bold;
     --nav-link-font-weight: 300;
 }
 
-.header-title{
+.header__title {
     color: var(--color-text-light);
     text-decoration: none;
     font-size: var(--nav-title-font-size);
     font-weight: var(--nav-title-font-weight);
 }
 
-.header-nav{
+.header__nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -19,23 +19,97 @@
     margin-bottom: 5rem;
 }
 
-.header-nav ul{
+.header__nav ul {
     display: flex;
     margin: 0;
     padding: 0;
 }
 
-.header-nav li{
+.header__nav li {
     list-style: none;
 }
 
-.header-nav li a{
+.header__nav li a {
     text-decoration: none;
     color: var(--color-text-light);
     font-weight: var(--nav-link-font-weight);
     padding: 1rem;
 }
 
-.header-nav li a:hover, .header-title:hover{
+.header__nav li a:hover,
+.header__title:hover {
     color: white;
+}
+
+.header__nav .header__userName {
+    border: 1px solid #fff;
+    background: var(--color-background-light);
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.header__nav .header__hamburger {
+    font-size: 30px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-right: 30px;
+    display: none;
+}
+
+@media(max-width: 1150px) {
+    .header__nav ul {
+        display: none;
+    }
+
+    .header__nav .header__userName{
+        flex-basis: 100%;
+        border: none;
+        background: none;
+        order: 4;
+        margin: 0;
+        padding-top: 30px;
+        font-size: 25px;
+    }
+
+    .header__nav .header__hamburger {
+        display: flex;
+        order: 3
+    }
+
+    .header__nav ul.show {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        align-items: center;
+        order: 3;
+        margin-top: 20px;
+    }
+
+    .header__nav ul.show li{
+        padding: 10px 0 10px 0;
+    }
+
+    .header__nav ul.show li a{
+        padding: 5px 40px 5px 40px;
+    }
+}
+
+@media(max-width: 450px) {
+    .header__nav .header__title{
+        font-size: 14vw;
+    }
+
+    .header__nav .header__hamburger{
+        flex-basis: 100%;
+        justify-content: center;
+        margin: 0;
+        margin: 40px 0 0 0;
+        font-size: 40px;
+    }
+
+    .header__nav ul.show li a{
+        padding: 5px 10px 5px 10px;
+    }
 }

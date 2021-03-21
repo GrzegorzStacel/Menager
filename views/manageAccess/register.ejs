@@ -18,8 +18,8 @@
               <input type="password" id="password2" name="password2" placeholder="CONFIRM PASSWORD"
                 value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
             </div>
-            <%- include('../partials/messages') %>
-            <button class="btn btn-primary btn-center btn-focus-black" type="submit">Register</button>
+            <%- include('../partials/messages_manageAccess') %>
+            <button class="btn btn-primary btn__temporal__center btn-focus-black" type="submit">Register</button>
           </form>
           <p class="access__message">Have an account? <a href="/login">Login</a></p>
         </div>
