@@ -6,6 +6,8 @@ const { Company } = require('../models/Company')
 const { User } = require('../models/User')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 const { ensureAuthenticated } = require('../middleware/auth')
+const getDateAndTime = require('../startup/defaultDataForNewUser/dataTime')
+
 
 // All Games Route
 router.get('/', ensureAuthenticated, async (req, res) => {
@@ -51,6 +53,8 @@ router.post('/', ensureAuthenticated, async (req, res) => {
 
         const game = new Game({
             title: req.body.title,
+            whoCreate: userData.name,
+            createdAt: getDateAndTime(),
             company: req.body.company,
             publishDate: new Date(req.body.publishDate),
             playTime: req.body.playTime,
@@ -77,7 +81,7 @@ router.post('/', ensureAuthenticated, async (req, res) => {
         }
 
         saveCover(game, req.body.cover)
-    
+
         game.title = capitalizeFirstLetter(game.title)
         game.description = capitalizeFirstLetter(game.description)
 
@@ -92,12 +96,11 @@ router.post('/', ensureAuthenticated, async (req, res) => {
         
         userData.gamesOwned = gamesArray;
         await userData.save();
-        // #
 
         const newGame = await game.save()
         res.redirect(`games/${newGame.id}`)
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.log(err);
         renderFormPage(res, req, game, 'new', true, "Something went wrong")
     }
 })
@@ -177,7 +180,6 @@ router.delete('/:id', ensureAuthenticated, async (req, res) => {
 
     updateUserGames.gamesOwned = gamesArray;
     await updateUserGames.save();
-    // # 
 
     req.flash('success_msg', `The game '${game.title}' has been successfully removed`)
     res.redirect('/games')
@@ -185,7 +187,6 @@ router.delete('/:id', ensureAuthenticated, async (req, res) => {
 
 
 // Middleware
-
 async function renderFormPage(res, req, game, form, hasError = false, message = '') {
     try {
         const displayUserName = await User.findOne({
@@ -207,19 +208,26 @@ async function renderFormPage(res, req, game, form, hasError = false, message = 
             params.error_msg = message;
         }
         res.render(`games/${form}`, params)
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.log(err);
         res.redirect('/games')
     }
 }
 
 function saveCover(game, coverEncoded) {
     if (coverEncoded == null) return
+
     const cover = JSON.parse(coverEncoded)
+
     if (cover != null && imageMimeTypes.includes(cover.type)) {
         game.coverImage = new Buffer.from(cover.data, 'base64')
         game.coverImageType = cover.type
     }
+    
+    // 'cover' - zwraca obiekt potrzebny gdy chcemy dodać domyślną pozycję w bazie (skopiować z terminala sporej wielkości obiekt)
+    // Kopiujemy go do pliku cryptedData.js + id utworzonej gry/firmy dodać do tablicy w defaultData.js
+    // Nie robiłem aż tak uniwersalnego systemu dodawania domyślnych gier/firm dlatego kolejność musi się zgadzać w obydwu plikach!
+    // console.log('cover:', cover);
 }
 
 function editAlertMessage(message) {
@@ -240,4 +248,4 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-module.exports = router
+module.exports = router;

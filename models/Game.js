@@ -9,6 +9,9 @@ const gameSchema = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
+    whoCreate: {
+        type: String
+    },
     description: {
         type: String,
         maxlength: 2000
@@ -22,9 +25,7 @@ const gameSchema = new mongoose.Schema({
         required: true
     },
     createdAt: {
-        type: Date,
-        required: true,
-        default: Date.now
+        type: String
     },
     coverImage: {
         type: Buffer,
@@ -55,7 +56,6 @@ function validateGame(game) {
         description: Joi.string().min(0).max(2000),
         publishDate: Joi.date().required(),
         playTime: Joi.number().required(),
-        createdAt: Joi.date(),
         coverImage: Joi.binary(),
         coverImageType: Joi.string(),
         company: Joi.ObjectId().required(),

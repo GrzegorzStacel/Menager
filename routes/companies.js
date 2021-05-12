@@ -4,7 +4,7 @@ const { Company, validate } = require('../models/Company')
 const { Game } = require('../models/Game')
 const { User } = require('../models/User')
 const { ensureAuthenticated } = require('../middleware/auth')
-
+const getDateAndTime = require('../startup/defaultDataForNewUser/dataTime')
 
 // All Companies Route
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -27,11 +27,13 @@ router.get('/new', ensureAuthenticated, async (req, res) => {
 // Create Company Route
 router.post('/', ensureAuthenticated, async (req, res) => {
     const userData = await User.findOne({
-        _id: req.session.passport.user
+        _id: req.session.passport.user,
     })
 
     const company = new Company({
-        name: req.body.name
+        name: req.body.name,
+        whoCreate: req.user.name,
+        createdAt: getDateAndTime()
     })
 
     const { error } = validate(req.body)
@@ -104,11 +106,6 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     } catch(err) {
         res.redirect(`/companies`)
     }
-})
-
-// Specifically Company Route //TODO delete route?
-router.get('/:id', ensureAuthenticated, (req, res) => {
-    res.send('show companies ' + req.params.id)
 })
 
 // Specifically Edit Company Route

@@ -6,6 +6,12 @@ const companySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    whoCreate: {
+        type: String
+    },
+    createdAt: {
+        type: String,
     }
 })
 
@@ -23,7 +29,7 @@ companySchema.pre('remove', function(next) {
 
 function validateCompany(company) {
     const schema = Joi.object({
-        name: Joi.string().min(2).max(255).required(),
+        name: Joi.string().min(2).max(255).required()
     });
 
     return schema.validate(company)
