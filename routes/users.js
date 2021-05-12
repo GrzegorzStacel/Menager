@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
-
-// User model
 const { User } = require('../models/User')
+const defaultDataCreate = require('../startup/defaultDataForNewUser/defaultData')
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -24,6 +23,7 @@ router.post('/register', (req, res) => {
         password,
         password2
     } = req.body
+
     let errors = []
 
     // Check required fields
@@ -60,7 +60,7 @@ router.post('/register', (req, res) => {
         User.findOne({
                 email: email
             })
-            .then(user => {
+            .then(async user => {
                 if (user) {
                     // User exists
                     errors.push({
@@ -93,6 +93,8 @@ router.post('/register', (req, res) => {
                             })
                             .catch(err => console.log(err))
                     }))
+
+                    defaultDataCreate(newUser);
                 }
             })
     }
