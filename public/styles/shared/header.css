@@ -147,21 +147,26 @@
         margin-top: 20px;
     }
 
-    .header__nav ul.show li{
+    .header__nav ul.show li {
         padding: 10px 0 10px 0;
     }
 
-    .header__nav ul.show li a{
+    .header__nav ul.show li a {
         padding: 5px 40px 5px 40px;
     }
 }
 
 @media(max-width: 450px) {
-    .header__nav .header__title{
+    .header__nav {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .header__nav .header__title {
         font-size: 14vw;
     }
 
-    .header__nav .header__hamburger{
+    .header__nav .header__hamburger {
         flex-basis: 100%;
         justify-content: center;
         margin: 0;
@@ -169,7 +174,7 @@
         font-size: 40px;
     }
 
-    .header__nav ul.show li a{
+    .header__nav ul.show li a {
         padding: 5px 10px 5px 10px;
     }
 }

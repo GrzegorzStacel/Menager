@@ -102,14 +102,20 @@ input:-webkit-autofill:active  {
 .company-name{
     font-size: 26px;
     padding: 0 20px 0 20px;
+    min-width: 310px;
 }
 
 .btn-row__marginBottom{
     margin-bottom: 50px;
 }
-@media(max-width: 900px){
+@media(max-width: 1050px){
+    .company-name{
+        min-width: auto;
+        text-align: center;
+    }
     .company-row{
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
     }
 

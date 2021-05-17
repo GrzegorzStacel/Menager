@@ -18,7 +18,7 @@
 .game-cover-title{
     text-align: center;
     color: var(--color-text-light);
-    font-size: 30px;
+    font-size: 26px;
     margin-bottom: 10px;
 }
 
@@ -36,6 +36,10 @@
 
 .game-grid-large {
     grid-template-columns: repeat(auto-fill, var(--game-cover-width-large));
+}
+
+.game-grid-large .game-cover-title{
+    font-size: 30px;
 }
 
 .game-details {
@@ -59,6 +63,7 @@
     background: var(--color-background-light);
     padding: 30px;
     border-radius: 20px;
+    max-width: 60%;
 }
 
 .game-details__btn{
@@ -91,6 +96,10 @@
     .game-details{
         flex-direction: column;
         align-items: center;
+    }
+
+    .game-details-grid{
+        max-width: none;
     }
 
     .game-details__btn{

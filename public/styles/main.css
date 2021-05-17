@@ -50,6 +50,10 @@ body {
 }
 
 @media(max-width: 450px){
+    .page-header{
+        text-align: center;
+    }
+    
     .container__innerContainer{
         margin: 0 0.5rem;
     }
