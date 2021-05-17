@@ -50,6 +50,10 @@
     margin-left: 15px;
 }
 
+.header__nav .header__userName .user__name{
+    color: orange;
+}
+
 .header__nav .header__hamburger {
     font-size: 30px;
     transition: 0.3s;
