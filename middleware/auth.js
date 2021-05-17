@@ -1,6 +1,5 @@
 module.exports = {
     ensureAuthenticated: function (req, res, next) {
-        //TODO enable accessing
         if (req.isAuthenticated()) { 
             return next()
         }

@@ -5,7 +5,6 @@ const games = require('../routes/games');
 
 module.exports = function(app) {
     app.use('/', index);
-    //TODO enable accessing
     app.use('/', users); 
     app.use('/companies', companies);
     app.use('/games', games);
