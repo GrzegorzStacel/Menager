@@ -1,8 +1,10 @@
 <header>
     <nav class="header__nav">
         <a class="header__title" href="/index">MyGames</a>
-        <p class="header__userName">Welcome<br> <%= userName %> </p>
-        <div class="header__hamburger"> <i class="fas fa-bars"></i></div>
+        <p class="header__userName">Welcome<br> <span class="user__name"><%= userName %></span></p>
+        <div class="header__hamburger"> 
+            <div class="bar"></div>
+        </div>
         <ul class="header__ul">
             <li><a href="/companies">Comapnies</a></li>
             <li><a href="/companies/new">Add Companies</a></li>      

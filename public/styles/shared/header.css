@@ -53,9 +53,10 @@
 .header__nav .header__hamburger {
     font-size: 30px;
     transition: 0.3s;
-    cursor: pointer;
     margin-right: 30px;
     display: none;
+    position: relative;
+    transition: .3s;
 }
 
 @media(max-width: 1150px) {
@@ -63,7 +64,7 @@
         display: none;
     }
 
-    .header__nav .header__userName{
+    .header__nav .header__userName {
         flex-basis: 100%;
         border: none;
         background: none;
@@ -75,7 +76,62 @@
 
     .header__nav .header__hamburger {
         display: flex;
-        order: 3
+        order: 3;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
+
+    .bar {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        border-radius: 2px;
+        transition: .3s;
+        box-shadow: -6px 6px 4px rgb(0 0 0 / 30%);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .bar::before {
+        border-radius: 2px;
+        content: "";
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        top: -10px;
+        position: absolute;
+        transition: .3s;
+        box-shadow: -6px 6px 4px rgb(0 0 0 / 30%);
+    }
+
+    .bar::after {
+        border-radius: 2px;
+        content: "";
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        top: 10px;
+        position: absolute;
+        transition: .3s;
+        box-shadow: -6px 6px 4px rgb(0 0 0 / 30%);
+    }
+
+    .bar.active {
+        width: 0;
+        top: 50%;
+        transition: .1s;
+    }
+    
+    .active::before {
+        transform: rotate(45deg) scaleX(1.2);
+        top: 0px;
+    }
+    
+    .active::after {
+        transform: rotate(-45deg) scaleX(1.2);
+        top: 0px;
     }
 
     .header__nav ul.show {
