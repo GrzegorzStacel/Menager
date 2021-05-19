@@ -1,4 +1,4 @@
 {
     "db": "mongodb://localhost/rest_api",
-    "AtlasDB": "mongodb+srv://test:Aa1234@complete.rl07r.mongodb.net/complete?retryWrites=true&w=majority"
+    "Database_URL": "mongodb+srv://user:W7vuoKCxfXI786uY@database.lxb2y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }
