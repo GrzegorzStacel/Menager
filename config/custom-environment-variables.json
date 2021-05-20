@@ -1,4 +1,4 @@
 {
-    "db": "mongodb://localhost/rest_api",
+    "db": "myAPI",
     "Database_URL": "mongodb+srv://user:W7vuoKCxfXI786uY@database.lxb2y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }
