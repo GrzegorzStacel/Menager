@@ -1,4 +1,0 @@
-{
-    "name": "Development",
-    "db": "mongodb://localhost/rest_api"
-}

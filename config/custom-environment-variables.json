@@ -1,4 +1,3 @@
 {
-    "db": "myAPI",
-    "Database_URL": "mongodb+srv://user:oFff6fsA96U2oYU1@database.lxb2y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    "db": "myAPI"
 } 
