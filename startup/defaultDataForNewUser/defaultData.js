@@ -39,16 +39,24 @@ async function defaultDataCreate(user) {
     ]
 
     let cryptedDataCounter = 0
+    let newComapnies = []
 
     for (let i = 0; i < companiesAndGames.length; i++) {
         const companyID = await createDefaultCompany(companiesAndGames[i].id, user)
+        newComapnies.push(companyID._id)
 
         for (let j = 0; j < companiesAndGames[i].games.length; j++) {
-            await createDefaultGame(companiesAndGames[i].games[j], cryptedData[cryptedDataCounter], companyID, user)
+            await createDefaultGame(companiesAndGames[i].games[j], cryptedData[cryptedDataCounter], companyID._id, user)
 
             cryptedDataCounter++
         }
     }
+
+    newComapnies.forEach(el => {
+        user.gamesCompanies.push(el);
+    });
+
+    await user.save();
 }
 
 async function createDefaultCompany(_id, user) {
@@ -62,10 +70,7 @@ async function createDefaultCompany(_id, user) {
         existCompany.createdAt = getDateAndTime()
         await Company.collection.insertOne(existCompany);
 
-        user.gamesCompanies.push(existCompany._id);
-        await user.save();
-
-        return existCompany._id;
+        return existCompany;
     } catch (error) {
         console.log('Error', error);
     }

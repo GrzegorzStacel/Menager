@@ -81,17 +81,19 @@ router.post('/register', (req, res) => {
                     })
 
                     // Hash Password
-                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, async (err, hash) => {
                         if (err) throw err;
                         // Set password to hashed
                         newUser.password = hash;
                         // Save user
-                        newUser.save()
-                            .then(user => {
-                                req.flash('success_msg', 'You are now registered and can log in')
-                                res.redirect('/login')
-                            })
-                            .catch(err => console.log(err))
+                        await newUser.save()
+                        try {
+                            req.flash('success_msg', 'You are now registered and can log in')
+                                res.redirect('/login')   
+                        } catch (err) {
+                            console.log(err)
+                        }
+                        
                     }))
 
                     defaultDataCreate(newUser);
