@@ -11,6 +11,14 @@
     font-weight: var(--nav-title-font-weight);
 }
 
+.header__title::first-line{
+    color: #FAFA37;
+}
+
+.header__title-color{
+    color: #53FA37;
+}
+
 .header__nav {
     display: flex;
     flex-wrap: wrap;
@@ -48,6 +56,7 @@
     text-align: center;
     border-radius: 20px;
     margin-left: 15px;
+    color: #96FA37;
 }
 
 .header__nav .header__userName .user__name{
