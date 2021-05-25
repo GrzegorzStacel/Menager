@@ -5,16 +5,7 @@ const cryptedData = require('./cryptedData')
 const getDateAndTime = require('./dataTime')
 
 async function defaultDataCreate(user) {
-    companiesAndGames = [
-        {
-            id: '608ff827c19ab741dcfcf71d', // Piranha Bytes
-            games: [
-                '608ff855c19ab741dcfcf71f', // Gothic 1
-                '608ff898c19ab741dcfcf721', // Gothic 2
-                '6097c46ba27d2110b4772117' // Gothic 3
-            ]
-        },
-        {
+    companiesAndGames = [{
             id: '608ff8dec19ab741dcfcf723', // Rockstar Games
             games: [
                 '609b96598ee1c50d34b1a71e', // GTA V
@@ -36,6 +27,13 @@ async function defaultDataCreate(user) {
             id: '609b9b521b50cf08387c9e21', // 343 Industries
             games: [
                 '609b9b901b50cf08387c9e23', // Halo 5
+            ]
+        },
+        {
+            id: '60ad01432c2b3720e80b7d5a',
+            games: [
+                '60ad02052c2b3720e80b7d5c', // Battlefield 3
+                '60ad03f0ed07f55858f7762d', // Battlefield 4
             ]
         }
     ]
